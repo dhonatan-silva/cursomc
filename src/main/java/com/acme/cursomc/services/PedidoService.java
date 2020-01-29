@@ -13,7 +13,7 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository repo;
 	
-	public Pedido buscar(Integer id) {
+	public Pedido find(Integer id) {
 		Pedido obj = repo.getOne(id);
 		if(obj == null) {
 			throw new ObjectNofFoundException("Objeto não encontrado! Id: " + id
