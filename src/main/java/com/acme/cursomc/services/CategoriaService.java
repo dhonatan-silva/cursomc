@@ -2,8 +2,6 @@ package com.acme.cursomc.services;
 
 import java.util.List;
 
-import javax.print.attribute.standard.PageRanges;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -12,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.acme.cursomc.domain.Categoria;
+import com.acme.cursomc.dto.CategoriaDTO;
 import com.acme.cursomc.repositories.CategoriaRepository;
 import com.acme.cursomc.services.exception.DataIntegrityException;
 import com.acme.cursomc.services.exception.ObjectNofFoundException;
@@ -58,5 +57,9 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
