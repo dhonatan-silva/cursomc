@@ -23,6 +23,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 	
 	//Consulta por padrão de nome do framework - Implementação automática
 	//O resultado é o mesmo do método search
-	Page<Produto> findDistinctByNomeContaningAndCategoriasIn(String nome, List<Categoria> categorias, Pageable pageRequest);
+	Page<Produto> findDistinctByNomeContainingAndCategoriasIn(String nome, List<Categoria> categorias, Pageable pageRequest);
 
 }
